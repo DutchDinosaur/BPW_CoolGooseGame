@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Jumpable
   - Void
+  - Bullet_Player
+  - Bullet_Enemy
   layers:
   - Default
   - TransparentFX

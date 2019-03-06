@@ -18,7 +18,7 @@ public class GunController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //Shoot if you have a gun in hand
         if (currentGun != null)
