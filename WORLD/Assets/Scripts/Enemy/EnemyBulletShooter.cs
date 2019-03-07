@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class EnemyBulletShooter : MonoBehaviour
 {
+    [Header("Shoot")]
+    public bool IsShooting;
 
+    [Header("Rotate")]
     public bool IsRotating;
     [SerializeField]
     private float rotateSpeed;
 
-    [Space(15)]
+    [Header("Wavy Rotate")]
     public bool IsWavyRotating;
     [SerializeField]
     private float wavyRotateSpeed;
@@ -18,21 +21,28 @@ public class EnemyBulletShooter : MonoBehaviour
     private float wavyRotation;
     private bool wavyRotateUp;
 
-    [Space(15)]
+    [Header("Shoot Countdown")]
     [SerializeField]
     private int shootCountdownTime;
     private int shootCountdown;
 
-    [Space(15)]
-    [SerializeField]
-    private bool IsWavyShooting;
+    [Header("Wavy Shoot")]
+    public bool IsWavyShooting;
     [SerializeField]
     private float wavyShootSpeed;
     [SerializeField]
     private Vector2 wavyShootMinNMax;
     private bool wavyShootUp;
 
-    [Space(15)]
+    [Header("Ring Shoot")]
+    public bool IsRingShooting;
+    [SerializeField]
+    private int ringShootCountdownTime;
+    [SerializeField]
+    private int ringShootAmount;
+    private int ringShootCountdown;
+
+    [Header("Other")]
     [SerializeField]
     private Transform bulletParent;
     [SerializeField]
@@ -47,13 +57,28 @@ public class EnemyBulletShooter : MonoBehaviour
         if (IsRotating) { Rotate(); }
         if (IsWavyRotating) { wavyRotate(); }
         if (IsWavyShooting) { wavyShoot(); }
+        if (IsRingShooting) { ringShoot(); }
 
-        if (shootCountdown >= shootCountdownTime)
+        if (shootCountdown >= shootCountdownTime && IsShooting)
         {
             Shoot();
             shootCountdown = 0;
         }
         shootCountdown += 1;
+    }
+
+    void ringShoot()
+    {
+        if (ringShootCountdown >= ringShootCountdownTime)
+        {
+            for (int i = 0; i < ringShootAmount; i++)
+            {
+                transform.Rotate(0, 360/ ringShootAmount, 0);
+                Shoot();
+            }
+            ringShootCountdown = 0;
+        }
+        ringShootCountdown += 1;
     }
 
     void Shoot()

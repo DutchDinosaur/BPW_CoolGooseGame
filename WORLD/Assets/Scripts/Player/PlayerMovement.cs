@@ -20,6 +20,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private Vector2 yUpperAndLowerRotationClamp = new Vector2(15, -15);
     [Space(15)]
+    [SerializeField]
+    private int jumpForce = 25;
+    [SerializeField]
+    private float jumpSustain = .5f;
+    [SerializeField]
+    private float addedDownwardsAcceleration = 6;
+    [SerializeField]
+    private float Gravity = 9.8f;
 
     private Vector2 Rotation;
 
@@ -27,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        Physics.gravity = new Vector3(0, -Gravity, 0);
+
         rb = GetComponent<Rigidbody>();
     }
 
@@ -39,8 +49,7 @@ public class PlayerMovement : MonoBehaviour
     void MovementAndRotation()
     {
         //Movement
-        rb.velocity = (transform.forward * Input.LStick.y * xAndYSpeed.y + transform.right * Input.LStick.x * xAndYSpeed.x);
-        rb.AddForce(Vector3.down * 9.8f);
+        rb.AddForce(transform.forward * Input.LStick.y * xAndYSpeed.y + transform.right * Input.LStick.x * xAndYSpeed.x);
 
         //Rotation
         Rotation += new Vector2(Input.RStick.y, Input.RStick.x);
@@ -52,9 +61,31 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+
     void Jump()
     {
+        //Jump
+        if (Input.AButton && isgrounded == true)
+        {
+            rb.AddForce(0, jumpForce, 0);
+        }
 
+        if (Input.AButton && rb.velocity.y > 0)
+        {
+            rb.AddForce(0, jumpSustain, 0);
+        }
+
+        if (rb.velocity.y < 0)
+        {
+            //rb.mass += addedDownwardsAcceleration;
+            Physics.gravity -= new Vector3(0, addedDownwardsAcceleration, 0);
+        }
+
+        if (isgrounded == true)
+        {
+            //rb.mass = .1f;
+            Physics.gravity = new Vector3(0, -Gravity, 0);
+        }
     }
 
     void OnCollisionEnter(Collision Collision)
