@@ -34,5 +34,4 @@ public class Pool : MonoBehaviour
 
         return bullet;
     }
-
 }
