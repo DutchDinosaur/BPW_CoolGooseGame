@@ -9,30 +9,32 @@ public class GunController : MonoBehaviour
     [SerializeField]
     private InputManager Input;
 
+    [SerializeField]
+    private int shootSpeed;
+
+    private int shootCounter;
+
     private Gun currentGun = null;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void FixedUpdate()
     {
-        //Shoot if you have a gun in hand
         if (currentGun != null)
         {
-            if (Input.ShootButton)
+            if (shootCounter < shootSpeed)
+            {
+                shootCounter += 1;
+            }
+
+            if (Input.ShootButton && shootCounter >= shootSpeed)
             {
                 currentGun.Shoot();
+                shootCounter = 0;
             }
         }
     }
 
     public void OnTriggerEnter(Collider col)
     {
-        //Pick up the gun
         Gun gun = col.gameObject.GetComponent<Gun>();
         if (gun != null)
         {

@@ -96,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Collision.gameObject.tag == "Void")
         {
-            PlayerTransform.position = new Vector3(0,1,0);
+            Application.LoadLevel(Application.loadedLevel);
         }
     }
 

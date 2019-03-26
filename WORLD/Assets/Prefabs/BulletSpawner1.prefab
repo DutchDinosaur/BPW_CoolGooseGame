@@ -1,0 +1,180 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6777544508142363774
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6777544508142363775}
+  - component: {fileID: 6777544508142363772}
+  m_Layer: 0
+  m_Name: BulletSpawner1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6777544508142363775
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6777544508142363774}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6777544508393140620}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6777544508142363772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6777544508142363774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3422e60fd6ff505438078f74e6302e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsShooting: 0
+  IsRotating: 0
+  rotateSpeed: 3
+  IsWavyRotating: 1
+  wavyRotateSpeed: 0.1
+  wavyRotateMinNMax: {x: 5, y: 50}
+  shootCountdownTime: 6
+  IsWavyShooting: 1
+  wavyShootSpeed: 2
+  wavyShootMinNMax: {x: -100, y: 100}
+  IsRingShooting: 0
+  ringShootCountdownTime: 0
+  ringShootAmount: 0
+  bulletParent: {fileID: 0}
+  poolTransform: {fileID: 6777544508393140620}
+  pool: {fileID: 6777544508393140621}
+--- !u!1 &6777544508393140623
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 6008241666434926710, guid: 3f250544ba3c1c24c91a46cc8adf3071,
+    type: 3}
+  m_PrefabInstance: {fileID: 968031083048352249}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6777544508393140620}
+  - component: {fileID: 6777544508393140621}
+  m_Layer: 0
+  m_Name: BulletPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6777544508393140620
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 6008241666434926709, guid: 3f250544ba3c1c24c91a46cc8adf3071,
+    type: 3}
+  m_PrefabInstance: {fileID: 968031083048352249}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6777544508393140623}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6777544508142363775}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6777544508393140621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 6008241666434926708, guid: 3f250544ba3c1c24c91a46cc8adf3071,
+    type: 3}
+  m_PrefabInstance: {fileID: 968031083048352249}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6777544508393140623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12a2138237cb5e14cb883a37ffa1ec25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyBulletPrefab: {fileID: 6045003818689715838, guid: 6071265b91f342f499f7f0e6f06f6020,
+    type: 3}
+  bulletsToSpawnInPool: 1000
+--- !u!1001 &968031083048352249
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6777544508142363775}
+    m_Modifications:
+    - target: {fileID: 6008241666434926710, guid: 3f250544ba3c1c24c91a46cc8adf3071,
+        type: 3}
+      propertyPath: m_Name
+      value: BulletPool
+      objectReference: {fileID: 0}
+    - target: {fileID: 6008241666434926709, guid: 3f250544ba3c1c24c91a46cc8adf3071,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6008241666434926709, guid: 3f250544ba3c1c24c91a46cc8adf3071,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6008241666434926709, guid: 3f250544ba3c1c24c91a46cc8adf3071,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6008241666434926709, guid: 3f250544ba3c1c24c91a46cc8adf3071,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6008241666434926709, guid: 3f250544ba3c1c24c91a46cc8adf3071,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6008241666434926709, guid: 3f250544ba3c1c24c91a46cc8adf3071,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6008241666434926709, guid: 3f250544ba3c1c24c91a46cc8adf3071,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6008241666434926709, guid: 3f250544ba3c1c24c91a46cc8adf3071,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6008241666434926709, guid: 3f250544ba3c1c24c91a46cc8adf3071,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6008241666434926709, guid: 3f250544ba3c1c24c91a46cc8adf3071,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6008241666434926709, guid: 3f250544ba3c1c24c91a46cc8adf3071,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3f250544ba3c1c24c91a46cc8adf3071, type: 3}

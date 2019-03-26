@@ -83,7 +83,7 @@ public class EnemyBulletShooter : MonoBehaviour
 
     void Shoot()
     {
-        if (poolTransform.childCount <= 1)
+        if (poolTransform.childCount == 1)
         {
             GameObject bulletToDespawn = bulletParent.GetChild(0).gameObject; ;
             bulletToDespawn.transform.SetParent(poolTransform);

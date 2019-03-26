@@ -5,13 +5,18 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     [SerializeField]
-    private GameObject bulletPrefab;
+    private Camera cam;
     [SerializeField]
-    private Transform shootingTransform;
-    [SerializeField]
-    private float shootingForce = 1000;
+    private ParticleSystem muzzleFlash;
 
-    // Start is called before the first frame update
+    [SerializeField]
+    private int damage = 1;
+    [SerializeField]
+    private float range = 100;
+
+    [SerializeField]
+    private GameObject impactEffect;
+
     void Start()
     {
 
@@ -19,10 +24,26 @@ public class Gun : MonoBehaviour
 
     public void Shoot()
     {
-        //Spawn a bullet and add a force
-        GameObject bullet = Instantiate(bulletPrefab, shootingTransform.position, shootingTransform.rotation);
-        Rigidbody bulletRigidBody = bullet.GetComponent<Rigidbody>();
-        bulletRigidBody.AddForce(shootingForce * bullet.transform.forward);
+        RaycastHit hit;
+        muzzleFlash.Play();
+
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
+        {
+            TargetMaterialImpact target = hit.transform.GetComponent<TargetMaterialImpact>();
+            if (target != null)
+            {
+                target.TakeDamage(damage);
+            }
+
+            Target Btarget = hit.transform.GetComponent<Target>();
+            if (Btarget != null)
+            {
+                Btarget.TakeDamage(damage);
+            }
+
+            GameObject impact = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            Destroy(impact, 2);
+        }
     }
 
     public void OnPickup(Transform parentTransform)

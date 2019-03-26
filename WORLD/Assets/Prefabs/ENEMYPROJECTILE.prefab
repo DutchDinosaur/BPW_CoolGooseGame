@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6045003818689715836}
   - component: {fileID: 6045003818689715839}
   - component: {fileID: 6045003818689715811}
+  - component: {fileID: 4677069697720096478}
   m_Layer: 0
   m_Name: ENEMYPROJECTILE
   m_TagString: Bullet_Enemy
@@ -87,7 +88,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6045003818689715838}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -105,3 +106,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
+--- !u!114 &4677069697720096478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6045003818689715838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb573b53366688c4da6378321f04bd23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  objectToDestroy:
+  - {fileID: 6045003818689715838}
+  deathEffect: {fileID: 4325021828306254647, guid: 1d8571e4ac69482418cba8ae515aff11,
+    type: 3}

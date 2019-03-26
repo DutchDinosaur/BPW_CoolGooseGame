@@ -12,8 +12,6 @@ public class Pool : MonoBehaviour
 
     private void Start()
     {
-        //Instance = this;
-
         for (int i = 0; i < bulletsToSpawnInPool; i++)
         {
             Instantiate(enemyBulletPrefab,transform);
