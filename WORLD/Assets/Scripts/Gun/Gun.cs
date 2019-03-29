@@ -22,10 +22,8 @@ public class Gun : MonoBehaviour
     [SerializeField]
     private GameObject gunModel;
 
-    void Start()
-    {
-
-    }
+    [SerializeField]
+    private AudioSource hitsound;
 
     public void Shoot()
     {
@@ -38,18 +36,21 @@ public class Gun : MonoBehaviour
             if (target != null)
             {
                 target.TakeDamage(damage);
+                hitsound.Play();
             }
 
             Target Btarget = hit.transform.GetComponent<Target>();
             if (Btarget != null)
             {
                 Btarget.TakeDamage(damage);
+                hitsound.Play();
             }
 
             BossTarget Ctarget = hit.transform.GetComponent<BossTarget>();
             if (Ctarget != null)
             {
                 Ctarget.TakeDamage(damage);
+                hitsound.Play();
             }
 
             GameObject impact = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));

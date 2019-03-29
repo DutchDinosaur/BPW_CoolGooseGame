@@ -13,6 +13,12 @@ public class PlayerHP : MonoBehaviour
 
     public int enemyBulletDamage = 1;
 
+    [SerializeField]
+    private AudioSource hppick;
+
+    [SerializeField]
+    private AudioSource damage;
+
     //private GameObject 
 
     private void FixedUpdate()
@@ -26,6 +32,7 @@ public class PlayerHP : MonoBehaviour
         {
             takeDamagePlayer(enemyBulletDamage);
             Destroy(Collision.gameObject);
+            damage.Play();
         }
 
         if (Collision.gameObject.tag == "HEAL")
@@ -34,6 +41,7 @@ public class PlayerHP : MonoBehaviour
             {
                 HP += 2;
                 Destroy(Collision.gameObject);
+                hppick.Play();
             }
         }
 
@@ -43,6 +51,7 @@ public class PlayerHP : MonoBehaviour
             {
                 HP = maxHP;
                 Destroy(Collision.gameObject);
+                hppick.Play();
             }
         }
     }

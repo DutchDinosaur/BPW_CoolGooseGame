@@ -16,6 +16,9 @@ public class GunController : MonoBehaviour
 
     private Gun currentGun = null;
 
+    [SerializeField]
+    private AudioSource shooting;
+
     void FixedUpdate()
     {
         if (currentGun != null)
@@ -30,6 +33,11 @@ public class GunController : MonoBehaviour
                 currentGun.Shoot();
                 shootCounter = 0;
             }
+
+            if (Input.ShootButton)
+            {
+                shooting.enabled = true;
+            } else { shooting.enabled = false; }
         }
     }
 

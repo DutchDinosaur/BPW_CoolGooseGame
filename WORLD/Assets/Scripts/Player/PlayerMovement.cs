@@ -33,6 +33,9 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isgrounded;
 
+    [SerializeField]
+    private AudioSource walksound;
+
     private void Start()
     {
         Physics.gravity = new Vector3(0, -Gravity, 0);
@@ -50,6 +53,11 @@ public class PlayerMovement : MonoBehaviour
     {
         //Movement
         rb.AddForce(transform.forward * Input.LStick.y * xAndYSpeed.y + transform.right * Input.LStick.x * xAndYSpeed.x);
+        if (rb.velocity.x > 1 || rb.velocity.z > 1)
+        {
+            walksound.enabled = true;
+        }
+        else { walksound.enabled = false; }
 
         //Rotation
         Rotation += new Vector2(Input.RStick.y, Input.RStick.x);
