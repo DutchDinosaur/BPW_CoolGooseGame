@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class bOSS : MonoBehaviour
 {
@@ -22,6 +23,14 @@ public class bOSS : MonoBehaviour
     [SerializeField]
     private int AttackTime;
     private int counter;
+
+    public int bossHP;
+    public Text bossHPText;
+
+    private void Start()
+    {
+        bossHPText.text = "";
+    }
 
     void FixedUpdate()
     {
@@ -56,6 +65,17 @@ public class bOSS : MonoBehaviour
             shooters[3].GetComponent<EnemyBulletShooter>().IsShooting = true;
             targetScript.isActive = true;
             isAngry = false;
+        }
+
+        if (anim.isActive == true)
+        {
+            bossHP = 0;
+            for (int i = 0; i < geese.Length; i++)
+            {
+                if (geese[i] != null) { bossHP += geese[i].GetComponent<TargetMaterialImpact>().health; }
+            }
+            bossHP += targetScript.health;
+            bossHPText.text = "Valentijn Muijers Destroyer Of Worlds:" + bossHP.ToString() + " /100";
         }
     }
 

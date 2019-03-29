@@ -1,17 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class BossTarget : MonoBehaviour
 {
-    [SerializeField]
-    private int health;
+    public int health;
     [SerializeField]
     private GameObject[] objectToDestroy;
     [SerializeField]
     private GameObject deathEffect;
 
+
     public bool isActive = false;
+
+    public Text bossHPText;
 
 
     public void TakeDamage(int amount)
@@ -23,6 +27,7 @@ public class BossTarget : MonoBehaviour
             if (health <= 0)
             {
                 Die();
+                bossHPText.text = "Valentijn Muijers  Destroyer Of Worlds:0 /100";
             }
         }
        

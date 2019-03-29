@@ -17,7 +17,7 @@ public class PlayerHP : MonoBehaviour
 
     private void FixedUpdate()
     {
-        HPText.text = "HP : " + HP.ToString();
+        HPText.text = "HP : " + HP.ToString() + "/10";
     }
 
     void OnCollisionEnter(Collision Collision)

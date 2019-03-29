@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class TargetMaterialImpact : MonoBehaviour
 {
-    [SerializeField]
-    private int health;
+    public int health;
     [SerializeField]
     private GameObject deathEffect;
     [SerializeField]
