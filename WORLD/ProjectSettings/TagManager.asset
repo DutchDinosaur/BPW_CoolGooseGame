@@ -7,6 +7,8 @@ TagManager:
   - Jumpable
   - Void
   - Bullet_Enemy
+  - HEAL
+  - HEALFULL
   layers:
   - Default
   - TransparentFX

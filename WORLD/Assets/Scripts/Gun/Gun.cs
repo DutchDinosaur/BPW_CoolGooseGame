@@ -17,6 +17,11 @@ public class Gun : MonoBehaviour
     [SerializeField]
     private GameObject impactEffect;
 
+    [SerializeField]
+    private GameObject gunSprite;
+    [SerializeField]
+    private GameObject gunModel;
+
     void Start()
     {
 
@@ -41,6 +46,12 @@ public class Gun : MonoBehaviour
                 Btarget.TakeDamage(damage);
             }
 
+            BossTarget Ctarget = hit.transform.GetComponent<BossTarget>();
+            if (Ctarget != null)
+            {
+                Ctarget.TakeDamage(damage);
+            }
+
             GameObject impact = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
             Destroy(impact, 2);
         }
@@ -52,5 +63,7 @@ public class Gun : MonoBehaviour
         transform.SetParent(parentTransform);
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
+        gunSprite.SetActive(true);
+        gunModel.SetActive(false);
     }
 }

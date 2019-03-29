@@ -23,6 +23,12 @@ public class InputManager : MonoBehaviour
     //[HideInInspector]
     public bool ShootButton;
 
+    void Start()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     void FixedUpdate()
     {
         //Lstick

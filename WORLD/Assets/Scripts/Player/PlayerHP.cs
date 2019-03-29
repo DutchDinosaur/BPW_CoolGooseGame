@@ -7,9 +7,13 @@ public class PlayerHP : MonoBehaviour
 {
     public int HP = 5;
 
+    public int maxHP = 10;
+
     public Text HPText;
 
     public int enemyBulletDamage = 1;
+
+    //private GameObject 
 
     private void FixedUpdate()
     {
@@ -22,6 +26,24 @@ public class PlayerHP : MonoBehaviour
         {
             takeDamagePlayer(enemyBulletDamage);
             Destroy(Collision.gameObject);
+        }
+
+        if (Collision.gameObject.tag == "HEAL")
+        {
+            if (HP <= maxHP)
+            {
+                HP += 2;
+                Destroy(Collision.gameObject);
+            }
+        }
+
+        if (Collision.gameObject.tag == "HEALFULL")
+        {
+            if (HP <= maxHP-2)
+            {
+                HP = maxHP;
+                Destroy(Collision.gameObject);
+            }
         }
     }
 

@@ -83,6 +83,11 @@ public class EnemyBulletShooter : MonoBehaviour
 
     void Shoot()
     {
+        if (bulletParent.childCount == 0 && poolTransform.childCount == 1)
+        {
+            return;
+        }
+
         if (poolTransform.childCount == 1)
         {
             GameObject bulletToDespawn = bulletParent.GetChild(0).gameObject; ;

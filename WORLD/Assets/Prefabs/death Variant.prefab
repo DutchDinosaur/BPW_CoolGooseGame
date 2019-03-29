@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 2048148659298333784, guid: e1340aad824fc8f47b7e95f0c089cf4d,
         type: 3}
       propertyPath: m_Name
-      value: death
+      value: death Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2048148659298333787, guid: e1340aad824fc8f47b7e95f0c089cf4d,
         type: 3}
